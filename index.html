@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/main.css">
+    <title>To Do</title>
+</head>
+<body>
+    <div id="vm">
+        <form v-on:submit="addNewTodo">
+            <input type="text" name="item_name" v-model="item_name">
+            <input type="submit" name="submit" value="追加">
+        </form>
+        <ul>
+            <li v-for="item in item_list">
+                <input type="checkbox" v-on:checked>
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <script src="assets/vue.js"></script>
+    <script src="assets/main.js"></script>    
+</body>
+</html>
