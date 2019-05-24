@@ -13,14 +13,16 @@
             <input type="text" name="item_name" v-model="item_name">
             <input type="submit" name="submit" value="追加">
         </form>
-        <ul>
-            <li v-for="item in item_list">
-                <input type="checkbox" v-on:checked>
-                {{ item }}
-            </li>
-        </ul>
+        <div id="lists">
+            <ul id="todo_list">
+                <li is="todo-item" v-for="item in item_list" v-bind:item="item" :key="item" v-on:done="closeTodo(item)"></todo-item>
+            </ul>
+            <ul id="done_list">
+                <li is="done-todo-item" v-for="item in done_item_list" v-bind:item="item" :key="item"></li>
+            </ul>
+        </div>
     </div>
     <script src="assets/vue.js"></script>
-    <script src="assets/main.js"></script>    
+    <script src="assets/main.js"></script>
 </body>
 </html>
