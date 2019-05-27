@@ -8,20 +8,25 @@
     <title>To Do</title>
 </head>
 <body>
-    <div id="vm">
-        <form v-on:submit="addNewTodo">
-            <input type="text" name="item_name" v-model="item_name">
-            <input type="submit" name="submit" value="追加">
-        </form>
-        <div id="lists">
-            <ul id="todo_list">
-                <li is="todo-item" v-for="item in item_list" v-bind:item="item" :key="item" v-on:done="closeTodo(item)"></todo-item>
-            </ul>
-            <ul id="done_list">
-                <li is="done-todo-item" v-for="item in done_item_list" v-bind:item="item" :key="item"></li>
-            </ul>
+    <main>
+        <div id="vm">
+            <form v-on:submit="addNewTodo">
+                <input type="text" name="item_name" v-model="item_name">
+                <input type="submit" name="submit" value="追加">
+            </form>
+            <div id="lists">
+                <h3>未完了</h3>
+                <ul id="todo_list">
+                    <li is="todo-item" v-for="item in not_done_list" v-bind:item="item" :key="item.id" v-on:done="closeTodo(item)" v-on:delete="deleteTodo(item)"></todo-item>
+                </ul>
+                <h3>完了</h3>
+                <ul id="done_list">
+                    <li is="done-todo-item" v-for="item in done_list" v-bind:item="item" :key="item.id" v-on:reopen="reopenTodo(item)"></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </main>
+    
     <script src="assets/vue.js"></script>
     <script src="assets/main.js"></script>
 </body>

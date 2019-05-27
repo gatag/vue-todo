@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+main {
+    padding: 2vw;
+}
+
+h3 {
+    margin-top: 3vh;
+}
+
+#lists {
+    margin-top: 3vh;
+}
+
+#todo_list, #done_list {
+    min-height: 10vh;
+    padding: 1.5vw;
+}
+
+#todo_list {
+    background: #bca;
+}
+
+#done_list {
+    background: #cab;
+}
