@@ -14,16 +14,20 @@
                 <input type="text" name="item_name" v-model="item_name">
                 <input type="submit" name="submit" value="追加">
             </form>
+            <div id="controls">
+                <button v-on:click="removeTodo">DELETE COMPLETELY💥</button>
+            </div>
             <div id="lists">
                 <h3>未完了</h3>
                 <ul id="todo_list">
-                    <li is="todo-item" v-for="item in not_done_list" v-bind:item="item" :key="item.id" v-on:done="closeTodo(item)" v-on:delete="deleteTodo(item)"></todo-item>
+                    <li is="todo-item" v-for="item in not_done_list" v-bind:item="item" :key="item.id" v-on:done="closeTodo(item)" v-on:delete="deleteTodo(item)"></li>
                 </ul>
                 <h3>完了</h3>
                 <ul id="done_list">
-                    <li is="done-todo-item" v-for="item in done_list" v-bind:item="item" :key="item.id" v-on:reopen="reopenTodo(item)"></li>
+                    <li is="done-todo-item" v-for="item in done_list" v-bind:item="item" :key="item.id" v-on:reopen="reopenTodo(item)" v-on:delete="deleteTodo(item)"></li>
                 </ul>
             </div>
+            
         </div>
     </main>
     
