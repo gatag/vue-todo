@@ -12,9 +12,9 @@ Vue.component('todo-item', {
     props: ['item'],
     template: `
         <li class="todo_item">
-            <span>{{ item.name }}</span>
             <button v-on:click="$emit('done', item)">DONE!😎</button>
             <button v-on:click="$emit('delete', item)">DELETE🤔</button>
+            {{ item.name }}
         </li>
     `
 });
@@ -22,10 +22,10 @@ Vue.component('todo-item', {
 Vue.component('done-todo-item', {
     props: ['item'],
     template: `
-        <li class="done_item">
-            <span>{{ item.name }}</span>
+        <li class="todo_item">
             <button v-on:click="$emit('reopen', item)">REOPEN😅</button>
             <button v-on:click="$emit('delete', item)">DELETE🤔</button>
+            {{ item.name }}
         </li>
     `
 });
@@ -37,6 +37,7 @@ let vm = new Vue({
         item_list: [],
         id: 0
     },
+    // LocalStorageからの読み込み
     created: function() {
         if (localStorage.length) {
             this.item_list = JSON.parse(localStorage.getItem('item_list'));
@@ -67,6 +68,7 @@ let vm = new Vue({
         }
     },
     methods: {
+        // LocalStorageへの保存
         save: function() {
             localStorage.setItem('item_list', JSON.stringify(this.item_list));
             localStorage.setItem('id', this.id);
@@ -75,7 +77,7 @@ let vm = new Vue({
             if (this.item_name === '') {
                 window.alert('No input');
             } else {
-                let id = this.id;
+                let id = parseInt(this.id);
                 let name = this.item_name;
                 let isDone = false;
                 let isDeleted = false;
@@ -88,18 +90,22 @@ let vm = new Vue({
             e.preventDefault();
             e.stopPropagation();
         },
+        // 完了
         closeTodo: function(item) {
             item.isDone = true;
             this.save();
         },
+        // 再開
         reopenTodo: function(item) {
             item.isDone = false;
             this.save();
         },
+        // 削除
         deleteTodo: function(item) {
             item.isDeleted = true;
             this.save();
         },
+        // 完全削除
         removeTodo: function() {
             let confirm = window.confirm(this.deleted_list.length + '件の削除済みのアイテムを完全に削除します。よろしいですか？');
             if (confirm) {

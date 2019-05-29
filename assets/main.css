@@ -4,19 +4,15 @@
 }
 
 main {
-    padding: 2vw;
-}
-
-h3 {
-    margin-top: 3vh;
+    padding: 2%;
 }
 
 li {
-    list-style-position: inside;
+    list-style: none;
 }
 
 #lists {
-    margin-top: 3vh;
+    justify-content: space-between;
 }
 
 #todo_list, #done_list {
@@ -30,4 +26,29 @@ li {
 
 #done_list {
     background: #cab;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list_wrapper {
+    width: 100%;
+    margin-top: 3vh;
+}
+
+.list_wrapper_header {
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 800px) {
+    .list_wrapper {
+        width: 47vw;
+    }
+}
+
+.todo_item {
+    margin: 1vh 0;
+    word-wrap: break-word;
 }
