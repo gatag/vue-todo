@@ -60,3 +60,17 @@ li::after {
     margin: 1vh 0;
     word-wrap: break-word;
 }
+
+.listing-enter-active, .listing-leave-active {
+    transition: all 0.5s;
+}
+
+.listing-enter {
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+.listing-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}

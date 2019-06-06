@@ -109,7 +109,8 @@ let vm = new Vue({
         removeTodo: function() {
             let confirm = window.confirm(this.deleted_list.length + '件の削除済みのアイテムを完全に削除します。よろしいですか？');
             if (confirm) {
-                for (index in this.item_list) {
+                // 要素削除時に要素がずれるため、逆回し
+                for (let index = this.item_list.length - 1; index >= 0; index--) {
                     if (this.item_list[index].isDeleted) {
                         this.item_list.splice(index, 1);
                     }
