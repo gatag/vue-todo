@@ -3,20 +3,17 @@
     padding: 0;
 }
 
+body {
+    min-width: 300px;
+}
+
 main {
     padding: 2%;
 }
 
 li {
     list-style: none;
-}
-
-li::after {
-    content: '';
-    display: block;
-    width: 85%;
-    border-bottom: 1px solid #555;
-    margin: 2% auto 1%;
+    padding: 1%;
 }
 
 #lists {
@@ -28,11 +25,11 @@ li::after {
     padding: 1.5vw;
 }
 
-#todo_list {
+#todo_list .todo_item {
     background: #bca;
 }
 
-#done_list {
+#done_list .todo_item {
     background: #cab;
 }
 
@@ -62,7 +59,11 @@ li::after {
 }
 
 .listing-enter-active, .listing-leave-active {
-    transition: all 0.5s;
+    transition: all 0.3s;    
+}
+
+.listing-leave-active {
+    position: absolute;
 }
 
 .listing-enter {
@@ -73,4 +74,8 @@ li::after {
 .listing-leave-to {
     transform: translateX(20px);
     opacity: 0;
+}
+
+.listing-move {
+    transition: transform 0.5s;
 }
